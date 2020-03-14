@@ -1,0 +1,56 @@
+@page
+@model LineInfoModel
+@{
+  ViewData["Title"] = "Line Information";
+}
+
+<h2>Line Information</h2>  
+
+<br />
+Your search string: "@Model.Input"
+<br />
+# of Stops found: @Model.LineList.Count
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                ID
+            </th>  
+			<th>  
+                Name
+            </th>  
+            <th>  
+                Stops
+            </th> 
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.LineList)  
+        {  
+            <tr>  
+                <td>  
+                    @item.StationID
+                </td>  
+                <td>  
+                    @item.StopName
+                </td> 
+				<td>  
+                    @item.Stops
+                </td>     
+            </tr>  
+        }  
+    </tbody>  
+</table> 

@@ -1,0 +1,51 @@
+@page
+@model TopTenStationInfoModel
+@{
+  ViewData["Title"] = "Top Ten Station Information";
+}
+
+<h2>Station Information</h2>  
+
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                ID
+            </th>  
+			<th>  
+                Name
+            </th>  
+            <th>  
+                NumRiders 
+            </th> 
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.StationList)  
+        {  
+            <tr>  
+                <td>  
+                    @item.StationID
+                </td>  
+                <td>  
+                    @item.StationName
+                </td> 
+				<td>  
+                    @item.DailyRider
+                </td> 
+            </tr>  
+        }  
+    </tbody>  
+</table> 
+
